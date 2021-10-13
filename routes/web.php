@@ -55,3 +55,25 @@ Route::get('page/{page?}', function ($hal = 1) {
 // makanan & minuman -> anda pesan makan : ... minum: ...
 // makanan & minuman & cemilan ->
 // anda pesan makan : ... minum: ... cemilan : ....
+Route::get('pesan/{makan?}/{minum?}/{cemilan?}', function ($a = null, $b = null, $c = null) {
+    if ($a == null && $b == null && $c == null) {
+        $pesan = "Anda Tidak Pesan, Silahkan Pulang";
+    }
+    if ($a != null) {
+        $pesan = "Anda Memesan"
+            . "<br>Makan : <b>$a</b>";
+    }
+    if ($a != null && $b != null) {
+        $pesan = "Anda Memesan"
+            . "<br>Makan : <b>$a</b>"
+            . "<br>Minum : <b>$b</b>";
+    }
+    if ($a != null && $b != null && $c != null) {
+        $pesan = "Anda Memesan"
+            . "<br>Makan   : <b>$a</b>"
+            . "<br>Minum   : <b>$b</b>"
+            . "<br>Cemilan : <b>$c</b>";
+    }
+
+    return $pesan;
+});
