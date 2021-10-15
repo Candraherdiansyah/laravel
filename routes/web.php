@@ -113,3 +113,14 @@ Route::get('pesan/{makan?}/{minum?}/{cemilan?}',
 
         return $pesan;
     });
+
+// Route Bagian DB Seeder
+Route::get('/testmodel', function () {
+    $query = App\Models\Post::all();
+    return $query;
+});
+
+Route::get('/test-post', function () {
+    $query = App\Models\Post::all();
+    return view('test-post', compact('query'));
+});
