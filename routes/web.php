@@ -115,11 +115,43 @@ Route::get('pesan/{makan?}/{minum?}/{cemilan?}',
     });
 
 // Route Bagian DB Seeder
+// Model Post
 Route::get('/testmodel', function () {
     $query = App\Models\Post::all();
     return $query;
 });
 
+Route::get('/testmodel/{id}', function ($id) {
+    $query = App\Models\Post::findOrFail($id);
+    return $query;
+});
+
+Route::get('/testmodel3', function () {
+    $query = App\Models\Post::where('title', 'like', '%i%')->get();
+    return $query;
+});
+
+Route::get('/testmodel4', function () {
+    $query = App\Models\Post::find(1);
+    $query->title = "Ciri Keluarga Sakinah";
+    $query->save();
+    return $query;
+});
+
+Route::get('/testmodel5', function () {
+    $query = App\Models\Post::find(2)->delete();
+    return $query;
+});
+
+Route::get('/testmodel6', function () {
+    $query = new App\Models\Post();
+    $query->title = "7 amalan pembuka jodoh";
+    $query->content = "lorem ipsum";
+    $query->save();
+    return $query;
+});
+
+// Model Latihan
 Route::get('/test-post', function () {
     $query = App\Models\Post::all();
     return view('test-post', compact('query'));

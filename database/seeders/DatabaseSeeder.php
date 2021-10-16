@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // memanggil data yang akan di kirim ke db
-        $this->call(PostSeeder::class);
+        $this->call(PostsSeeder::class);
+        $this->command->info("Sample Data Sudah Terisi");
+
     }
 }
